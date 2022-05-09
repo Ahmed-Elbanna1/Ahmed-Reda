@@ -28,7 +28,7 @@ if (isset($_GET["submit"])) {
     <div class="row container-fluid">
         <div class="text-center h3 text-danger my-5">Pos | Neg</div>
         <div class="col-6 offset-3 my-1">
-            <form method="get py-5 m-auto">
+            <form method="get">
                 <div class="form-group my-2">
                     <label for="Fnum" class="form-label">Enter Number</label>
                     <input type="number" class="form-control" name='first-num' id="Fnum" placeholder="Enter First Num">

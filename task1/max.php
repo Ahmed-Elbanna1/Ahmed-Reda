@@ -39,7 +39,7 @@ if (isset($_GET["submit"])) {
     <div class="row container-fluid">
         <div class="text-center h3 text-danger my-5">MAX & MIN</div>
         <div class="col-4 offset-4 my-1">
-            <form method="get py-5 m-auto">
+            <form method="get ">
                 <div class="form-group my-2">
                     <label for="Fnum" class="form-label">First Number</label>
                     <input type="number" class="form-control" name='first-num' id="Fnum" placeholder="Enter First Num">
