@@ -1,6 +1,7 @@
 <?php
 $msg = "";
 $res = "";
+$pre= "";
 if (isset($_GET["submit"])) {
     if (
         $_GET["physics"]  === "" ||
@@ -27,6 +28,7 @@ if (isset($_GET["submit"])) {
         $comp = $_GET["computer"];
         $res = (($phys + $chem + $bio + $math + $comp) / 500) * 100;
         $msg = $res . " %";
+        $pre=$res ." % => ";
         switch ($res) {
             case $res>=90:
                 $msg="Grade A";
@@ -96,7 +98,7 @@ if (isset($_GET["submit"])) {
         </div>
         <div class="col-6 m-auto text-center  mt-5 ">
 
-            <h3> <?php echo$res ." => ". $msg; ?></h3>
+            <h3> <?php echo$pre . $msg; ?></h3>
         </div>
     </div>
 
