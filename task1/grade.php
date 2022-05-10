@@ -2,6 +2,7 @@
 $msg = "";
 $res = "";
 $pre= "";
+$total="";
 if (isset($_GET["submit"])) {
     if (
         $_GET["physics"]  === "" ||
@@ -26,7 +27,8 @@ if (isset($_GET["submit"])) {
         $bio = $_GET["biology"];
         $math = $_GET["mathematics"];
         $comp = $_GET["computer"];
-        $res = (($phys + $chem + $bio + $math + $comp) / 500) * 100;
+        $total=$phys + $chem + $bio + $math + $comp;
+        $res = ($total / 500) * 100;
         $msg = $res . " %";
         $pre=$res ." % => ";
         switch ($res) {
@@ -97,8 +99,8 @@ if (isset($_GET["submit"])) {
             </form>
         </div>
         <div class="col-6 m-auto text-center  mt-5 ">
-
-            <h3> <?php echo$pre . $msg; ?></h3>
+            <h2> <?php echo "Total is " . $total; ?></h2>
+            <h3> <?php echo $pre . $msg; ?></h3>
         </div>
     </div>
 

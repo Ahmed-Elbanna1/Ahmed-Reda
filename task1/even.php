@@ -26,7 +26,7 @@ if (isset($_GET["submit"])) {
 
 <body>
     <div class="row container-fluid">
-        <div class="text-center h3 text-danger my-5">Pos | Neg</div>
+        <div class="text-center h3 text-danger my-5">Even | Odd</div>
         <div class="col-6 offset-3 my-1">
             <form method="get">
                 <div class="form-group my-2">

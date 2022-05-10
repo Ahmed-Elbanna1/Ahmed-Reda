@@ -1,9 +1,9 @@
 <?php
+$msg="";
 $temp="";
 $res = "";
-$surcharge=.20;
+$total="";
 if (isset($_POST["num"])) {
-    $total="";
     $unit = $_POST["num"];
     $first = .50;
     $second = .75;
@@ -13,26 +13,32 @@ if (isset($_POST["num"])) {
         $mul=$unit*$first;
         $vat = $mul *.20;
         $total = $mul +$vat;
-    }elseif ($unit>50 && $unit<=100) {
+        $msg= "Price is {$first} Per Unit <br> Price with out Vat is {$mul} <br> Vat : 20 % <br> Final Price {$total}";
+
+    }elseif ($unit>50 && $unit<=150) {
         $temp =50*$first;
         $mul=$unit-50;
         $res=$temp+($mul *$second);
         $vat=$res *.20;
         $total=$res +$vat;
-    }elseif ($unit>100 && $unit<=200) {
+        $msg= "Price is {$second} Per Unit <br>  Price with out Vat is {$res} <br> Vat : 20 % <br> Final Price {$total}";
+    }elseif ($unit>150 && $unit<=250) {
         $temp =50*$first + 100*$second;
         $mul=$unit-150;
         $res=$temp+($mul *$third);
         $vat=$res *.20;
         $total=$res +$vat;
+        $msg= "Price is {$third} Per Unit <br>  Price with out Vat is {$res} <br> Vat : 20 % <br> Final Price {$total}";
     }else{
         $temp =50*$first + 100*$second + 100*$third;
         $mul=$unit-250;
         $res=$temp+($mul *$above);
         $vat=$res *.20;
         $total=$res +$vat;
+        $msg= "Price is {$last} Per Unit <br>  Price with out Vat is {$res} <br> Vat : 20 % <br> Final Price {$total}" ;
     }
-    echo $total;
+    
+    // echo $total;
 
 }
  
@@ -64,7 +70,10 @@ if (isset($_POST["num"])) {
             </form>
         </div>
         <div class="col-12 m-auto text-center  mt-5 ">
-            <h3> <?php echo"Your bill is {$total}"?></h3>
+            <h2 class=" bg-success w-50 m-auto text-white py-5">
+                <?php echo$msg?>
+            </h2>
+            
 
         </div>
     </div>
