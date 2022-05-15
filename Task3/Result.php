@@ -27,7 +27,7 @@ if ($_SESSION['result'] < 25) {
     <div class="row container-fluid">
         <div class="text-center h3 text-danger my-5">Root</div>
         <div class="col-8 offset-2 my-1">
-            <table class="table">
+            <table class="table table-light table-striped table-hover table-bordered">
                 <form method="POST">
                     <thead class="text-start">
                         <tr>
