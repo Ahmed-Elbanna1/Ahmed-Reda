@@ -62,7 +62,8 @@ $users = [
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 
 <body>
@@ -72,15 +73,10 @@ $users = [
                 <tr>
                     <?php
                     $arr = [];
-                    foreach ($users as $property => $value) {
-                        foreach ($value as $key => $value3) {
-                            $arr[$key] = 0;
-                        }
+                    foreach ($users[0] as $property => $value) {
+                        echo "<th > $property </th>";
                     }
-                    // print_r($arr);
-                    foreach ($arr as $index => $value) {
-                        echo "<th > $index </th>";
-                    }
+
                     ?>
                 </tr>
             </thead>
@@ -89,28 +85,27 @@ $users = [
 
                 </tr>
                 <?php
-                for ($i = 0; $i < count($users); $i++) {
+                foreach ($users as $index => $user) {
                     echo "<tr>";
-                    foreach ($users[$i] as $key => $value1) {
+                    foreach ($user as $proberty => $value) {
                         // echo gettype($value1) . "<br>";
-                        if ($key == "gender") {
-                            // echo $key;
-                            foreach ($value1 as $prob => $value2) {
-                                if ($value2 == "m") {
-                                    echo ("<td > Male </td>");
-                                } else {
-                                    echo ("<td > Female </td>");
-                                }
-                            }
-                        } elseif (gettype($value1) == "object" || gettype($value1) == "array") {
+                        if (gettype($value) == "object" || gettype($value) == "array") {
                             echo "<td>";
-                            foreach ($value1 as $hobbiesindex => $hobbiesvalue) {
-                                echo ($hobbiesvalue . "<br>");
+                            foreach ($value as $key => $dataValue) {
+                                if ($proberty == 'gender' || $key == 'gender') {
+                                    if ($dataValue == "m") {
+                                        echo "male";
+                                    } else {
+                                        echo ("female");
+                                    }
+                                } else {
+                                    echo ($dataValue . "<br>");
+                                }
                             }
                             echo "</td>";
                         } else {
                             // echo $key;
-                            echo ("<td > {$value1} </td>");
+                            echo ("<td > {$value} </td>");
                         }
                     }
                     echo "</tr>";
@@ -120,7 +115,8 @@ $users = [
         </table>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
 </body>
 
