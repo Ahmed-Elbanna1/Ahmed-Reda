@@ -20,6 +20,10 @@ $users = [
             "school" => 'drawing',
             'home' => 'painting'
         ],
+        'activities' => [
+            "school" => 'drawing',
+            'home' => 'painting'
+        ],
 
     ],
     (object)[
