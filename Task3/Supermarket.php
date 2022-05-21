@@ -17,48 +17,48 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($products <= "0") {
         $errors['negative-year'] = '<div class="text-danger font-weight-bold" > Num of products Must be Positive Num </div>';
     }
-    if (empty($errors)) {
-        $table = '<table class="table table-success table-striped">';
+    if (isset($_POST['submit'])) {
+        if (empty($errors)) {
+            $table = '<table class="table table-success table-striped">';
 
-        $table .=
-            '<form method="get">';
+            $table .=
+                '<form method="get">';
 
-        for ($i = 0; $i < $products; $i++) {
-            $table .= '<tr>';
-            $table .= '<td>';
-            $table .= '<input type="text" class="" name="prod" id="pName">';
-            $table .= '</td>';
-            $table .= '<td>';
-            $table .= '<input type="number" class="" name="price" id="price">';
-            $table .= '</td>';
-            $table .= '<td>';
-            $table .= '<input type="number" class="" name="amount" id="pAmount">';
-            $table .= '</td>';
-            $table .= '</tr>';
-            if ($_GET) {
-                // $req = array_merge($req, $req[$i]);
-                $req[$i] = [
-                    'productName' => $_GET['prod'],
-                    'productPrice' => $_GET['price'],
-                    'productAmount' => $_GET['amount']
-                ];
-                print_r($req);
+            for ($i = 0; $i < $products; $i++) {
+                $table .= '<tr>';
+                $table .= '<td>';
+                $table .= '<input type="text" class="" name="prod" id="pName">';
+                $table .= '</td>';
+                $table .= '<td>';
+                $table .= '<input type="number" class="" name="price" id="price">';
+                $table .= '</td>';
+                $table .= '<td>';
+                $table .= '<input type="number" class="" name="amount" id="pAmount">';
+                $table .= '</td>';
+                $table .= '</tr>';
+                if (isset($_GET['calc'])) {
+                    // $req = array_merge($req, $req[$i]);
+                    $req[$i] = [
+                        'productName' => $_GET['prod'],
+                        'productPrice' => $_GET['price'],
+                        'productAmount' => $_GET['amount']
+                    ];
+                }
             }
+            $table .= '<tr>';
+            $table .= '<td> </td>';
+            $table .= '<td>';
+            $table .= '<div class="text-center mt-1 ">
+            <button class="btn btn-danger" name="calc">calculate</button>
+            </div>';
+            $table .= '</td>';
+            $table .= '<td> </td>';
+
+            print_r($req);
+
+            '</form>
+          </table>';
         }
-        $table .= '<tr>';
-        $table .= '<td> </td>';
-        $table .= '<td>';
-        $table .= '<div class="text-center mt-1 ">
-        <input type="submit" name="submit" value="submit">
-        </div>';
-        $table .= '</td>';
-        $table .= '<td> </td>';
-
-
-        // ;
-
-        '</form>
-      </table>';
     }
 }
 ?>
@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 </div>
 
                 <div class="form-group text-center mt-1 ">
-                    <input type="submit" name="submit" value="submit">
+                    <button class="btn btn-danger" name="submit"> Enter Product </button>
                 </div>
 
             </form>
